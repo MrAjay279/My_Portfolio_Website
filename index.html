@@ -1,334 +1,2381 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Ajay Kumar Soma - Computer Science Engineering student specializing in Artificial Intelligence & Machine Learning, software development, and problem solving.">
+
+    <meta name="keywords"
+        content="Ajay Kumar Soma, Portfolio, Software Developer, Python, Java, AI ML, Node.js, MySQL, DSA">
+
+    <meta name="author" content="Ajay Kumar Soma">
+
     <link rel="icon" type="image/x-icon" href="img/portfolio.jpg">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <title>Port Folio</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <title>Ajay Kumar Soma | Portfolio</title>
+
+    <style>
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #0b1120;
+            --bg-light: #111827;
+            --card: #151e30;
+            --card-hover: #1b263b;
+            --text: #f8fafc;
+            --text-light: #cbd5e1;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-dark: #0ea5e9;
+            --border: rgba(148, 163, 184, 0.15);
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            --max-width: 1150px;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        section {
+            padding: 100px 20px;
+            max-width: var(--max-width);
+            margin: auto;
+        }
+
+
+        /* ================================
+           HEADER / NAVBAR
+        ================================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar-container {
+            max-width: var(--max-width);
+            height: 70px;
+            margin: auto;
+            padding: 0 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .navbar {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .navbar a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: var(--accent);
+        }
+
+        #menu-icon {
+            display: none;
+            font-size: 1.7rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+
+        /* ================================
+           HOME
+        ================================= */
+
+        #home {
+            min-height: 100vh;
+            max-width: 1200px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+
+            padding-top: 120px;
+        }
+
+        .home-content {
+            flex: 1;
+        }
+
+        .hello {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .home-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .home-content h1 span {
+            color: var(--accent);
+        }
+
+        .home-content h2 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .home-content p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .home-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 12px 22px;
+            border-radius: 8px;
+
+            font-size: 0.95rem;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            background: var(--accent);
+            color: #06111c;
+        }
+
+        .primary-btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .secondary-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .home-image {
+            flex: 0 0 390px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .home-image img {
+            width: 360px;
+            max-height: 360px;
+            object-fit: contain;
+        }
+
+
+        /* ================================
+           SECTION TITLE
+        ================================= */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .section-title p {
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+
+        /* ================================
+           ABOUT
+        ================================= */
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-image img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .about-content h3 {
+            font-size: 1.7rem;
+            margin-bottom: 18px;
+        }
+
+        .about-content h3 span {
+            color: var(--accent);
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .highlight {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 10px;
+        }
+
+        .highlight i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .highlight span {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+
+        /* ================================
+           EDUCATION
+        ================================= */
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .education-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 35px;
+        }
+
+        .education-item::before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 7px;
+
+            width: 16px;
+            height: 16px;
+
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.12);
+        }
+
+        .education-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+        }
+
+        .education-card h3 {
+            color: var(--accent);
+            font-size: 1.15rem;
+            margin-bottom: 5px;
+        }
+
+        .education-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .education-card p {
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        .education-date {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+
+        /* ================================
+           SKILLS
+        ================================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+        }
+
+        .skill-category h3 {
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            padding: 7px 13px;
+            border-radius: 7px;
+
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+
+        /* ================================
+           CODING PROFILES
+        ================================= */
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .stat-card h3 {
+            color: var(--accent);
+            font-size: 2rem;
+        }
+
+        .stat-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .profile-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .profile-link {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            transition: 0.3s;
+        }
+
+        .profile-link:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .profile-link i {
+            font-size: 1.7rem;
+            color: var(--accent);
+        }
+
+        .profile-link div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-link strong {
+            font-size: 0.95rem;
+        }
+
+        .profile-link span {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+
+        /* ================================
+           PROJECTS
+        ================================= */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+
+            display: flex;
+            flex-direction: column;
+
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            background: var(--card-hover);
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .project-description {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+
+        .project-points {
+            margin-bottom: 20px;
+        }
+
+        .project-points li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+
+            color: var(--text-light);
+            font-size: 0.87rem;
+        }
+
+        .project-points li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        .project-tech span {
+            font-size: 0.75rem;
+            padding: 5px 9px;
+            border-radius: 5px;
+
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--accent);
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            width: fit-content;
+
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-btn:hover {
+            color: var(--text);
+        }
+
+
+        /* ================================
+           CERTIFICATIONS
+        ================================= */
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .certificate {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+
+            display: flex;
+            gap: 15px;
+        }
+
+        .certificate i {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-top: 3px;
+        }
+
+        .certificate h3 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .certificate p {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+
+        /* ================================
+           ACHIEVEMENTS
+        ================================= */
+
+        .achievement-list {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .achievement {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 15px;
+
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .achievement i {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-top: 4px;
+        }
+
+        .achievement h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .achievement p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+
+        /* ================================
+           CONTACT
+        ================================= */
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info > p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .contact-item i {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--accent);
+            border-radius: 8px;
+        }
+
+        .contact-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item strong {
+            font-size: 0.85rem;
+        }
+
+        .contact-item span {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            color: var(--text-light);
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+
+            padding: 14px 16px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            color: var(--text);
+            font-family: inherit;
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .send-btn {
+            width: fit-content;
+            border: none;
+            cursor: pointer;
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 25px 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+
+        /* ================================
+           SCROLL TO TOP
+        ================================= */
+
+        #scroll-top {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+
+            width: 42px;
+            height: 42px;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--accent);
+            color: #06111c;
+
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 999;
+
+            transition: 0.3s;
+        }
+
+        #scroll-top:hover {
+            transform: translateY(-4px);
+        }
+
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                position: absolute;
+                top: 70px;
+                right: -100%;
+
+                width: 260px;
+                padding: 25px;
+
+                flex-direction: column;
+                align-items: flex-start;
+
+                background: var(--bg-light);
+                border: 1px solid var(--border);
+                border-radius: 0 0 0 12px;
+
+                transition: 0.3s;
+            }
+
+            .navbar.active {
+                right: 0;
+            }
+
+            #menu-icon {
+                display: block;
+            }
+
+            #home {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .home-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .home-buttons {
+                justify-content: center;
+            }
+
+            .home-image {
+                flex: auto;
+            }
+
+            .home-image img {
+                width: 280px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-highlights {
+                text-align: left;
+            }
+
+            .profile-links {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            section {
+                padding: 75px 18px;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .certifications {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .home-content h1 {
+                font-size: 2.7rem;
+            }
+
+            .home-image img {
+                width: 240px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
+
+
 <body>
-<header>
-    <a href="#home" class="logo">Welcome <span> There!</span></a>
-    
-    <div class="bx bx-menu" id="menu-icon"></div>
-    <ul class="navbar">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about1">About</a></li>
-        <li><a href="#qualification">Qualification</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#profiles">Profiles</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-    <!-- home section -->
-</header>
-    <section>
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header>
+
+        <div class="navbar-container">
+
+            <a href="#home" class="logo">
+                Ajay<span>.</span>
+            </a>
+
+            <div id="menu-icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <ul class="navbar">
+
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#profiles">Profiles</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================================
+         HOME
+    ================================= -->
+
     <main>
-    <section id="home">
-    <div id = "hinfo">
-        <h1 style="text-align: center;" class = "name1">Hi,</h1>
-        <h1 style="text-align: center;" class = "name1">I'm <span class = "name">Ajay Kumar Soma</span></h1> 
-        <h1 style="text-align: center;"> <span id = "hin">I am the person with attitude of learning new things, Enthusiastic , 
-            Fast Learner.</span> </h1> 
-        <h4 style="text-align: center;">Motive: Having a Lot to Learn....</h4>
-        <br>
-        <img src="img/home.gif" alt="" id = "homeimg"> </div>
-       <div class="btn" id="rinfo"><i class="fa fa-download"><a href="img/AJAY_KUMAR_SOMA_RESUME.pdf" target="_blank" id = "rinfo"> Resume</a></i></div> 
-    </section>
-    </section>
-    <div id = "mid"></div>
-    <!-- home section Ennd -->
-    <hr>
-    <!-- about section start -->
-    <section id="about1">
-        <h1 style="text-align: center;" id = "h11">About <span id = "titles">Me !</span></h1> 
-        <br>
-    <table>
-        <tr>
-           <th id = "th1"> <img src="img/img2.jpg" alt="img" id = "dp"> </th>
-            <th id = "th2">
-            <p id = "pabout">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I'm <span class = "name">Ajay Kumar Soma</span>, Pursuing CSE(AI & ML) in CMR Technical Campus, Very interested in problem solving and algorithms. Highly Talented in Creative and Logical Thinking.
-            Currently Working on Development. 
-            </p>
-        </th>
-</tr>
-    </table>
-    <br> <br>
-    <img src="img/home1.gif" alt="" id = "homeimg5">
-    </section>
-    <!-- about section end -->
-    <hr>
-    <!-- qualification section start -->
-   <section id="qualification">
-        <h1 style="text-align: center;" id="h11">Qualification <i id="titles" class="fa fa-graduation-cap"></i></h1>
-        <br>
-        <ul>
-            <li>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                    <div>
-                        <p><a href="https://cmrtc.ac.in/" target="_blank"><b id="q">CMR TECHNICAL CAMPUS</b></a></p>
-                        <p>Computer Science and Engineering(Artificial Intelligence & Machine Learning)</p>
-                        <p> with (CGPA of <span id="titles">8.09</span>)</p>
-                    </div>
-                    <span style="font-size: 1.2rem; color: inherit; text-align: right; margin-left: 20px;">NOV 2022 - PRESENT</span>
-                </div>
-            </li>
-            <br>
-            <li>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                    <div>
-                        <p><a href="" target="_blank"><b id="q1">TELANGANA STATE MODEL SCHOOL & JR. COLLEGE</b></a></p>
-                        <p>MPC with (GPA of <span id="titles">7.57</span>)</p>
-                    </div>
-                    <span style="font-size: 1.2rem; color: inherit; text-align: right; margin-left: 20px;">MAY 2020 - MAY 2022</span>
-                </div>
-            </li>
-            <br>
-            <li>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                    <div>
-                        <p><a href="" target="_blank"><b id="q2">ZILLA PARISHAD HIGH SCHOOL</b></a></p>
-                        <p>State Board with (GPA of <span id="titles">10.0</span>)</p>
-                    </div>
-                    <span style="font-size: 1.2rem; color: inherit; text-align: right; margin-left: 20px;">MAR 2019 - MAR 2020</span>
-                </div>
-            </li>
-        </ul>
-        <br>
-        <img src="img/quali.gif" alt="" id="homeimg2">
-    </section>
 
-    <br>
-    <!-- qulaification section end -->
-    <hr>
-    <!-- skill section start  -->
-    <section id = "skills">
-        <div class="about-stats">
-            <h1 style="text-align: center;" id="h11">My <span id = "titles">Skills </span><i class="fa fa-laptop"></i></h1>
-            <br>
-            <div class="progress-bars">
-                <div class="progress-bar">
-                    <p class="prog-title" id="p">Java</p>
-                    <div class="progress-con">
-                        <p class="prog-text">80%</p>
-                        <div class="progress">
-                            <span class="html"></span>
-                        </div>
-                    </div>
+        <section id="home">
+
+            <div class="home-content">
+
+                <p class="hello">Hello, I'm</p>
+
+                <h1>
+                    Ajay Kumar <span>Soma</span>
+                </h1>
+
+                <h2>
+                    Computer Science Engineer | AI & ML
+                </h2>
+
+                <p>
+                    B.Tech graduate in Computer Science and Engineering
+                    specializing in Artificial Intelligence & Machine Learning.
+                    Passionate about software development, problem solving,
+                    algorithms, and building practical technology solutions.
+                </p>
+
+                <div class="home-buttons">
+
+                    <a href="img/AJAY_KUMAR_SOMA_RESUME.pdf"
+                        target="_blank"
+                        class="btn primary-btn">
+
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        View Resume
+
+                    </a>
+
+                    <a href="#projects"
+                        class="btn secondary-btn">
+
+                        <i class="fa-solid fa-code"></i>
+                        View Projects
+
+                    </a>
+
                 </div>
-                <div class="progress-bar">
-                    <p class="prog-title" id="p">DS and Algo </p>
-                    <div class="progress-con">
-                        <p class="prog-text">75%</p>
-                        <div class="progress">
-                            <span class="css"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <p class="prog-title" id="p">MY SQL</p>
-                    <div class="progress-con">
-                        <p class="prog-text">75%</p>
-                        <div class="progress">
-                            <span class="js"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <p class="prog-title" id="p">CPP</p>
-                    <div class="progress-con">
-                        <p class="prog-text">80%</p>
-                        <div class="progress">
-                            <span class="react"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <p class="prog-title" id="p">Web Development</p>
-                    <div class="progress-con">
-                        <p class="prog-text">75%</p>
-                        <div class="progress">
-                            <span class="node"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <p class="prog-title" id="p">Python</p>
-                    <div class="progress-con">
-                        <p class="prog-text">80%</p>
-                        <div class="progress">
-                            <span class="python"></span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
-        </div>
-        <img src="img/skiils.gif" alt="" id="homeimg2">
-    </section>
-    <!-- skill section end  -->
-    <hr>
-        <!-- profiles section start -->
-        <section id = "profiles">
-            <h1 style="text-align: center;">Coding <span id = "titles">Profiles </span><i class = "fa fa-code"></i></h1>
-            <br>
-                <ul>
-                    <li><p id="p">I solved <span id="titles">530 </span> DS and Algo Questions across platforms.</p></li><br>
-                    <li>Solved <span id="titles">100+</span>  problems in Leet Code.</li><br>
-                    <li>Solved <span id="titles">350+</span>  problems in CodeChef.</li><br>
-                </ul>
-                <ul>
-                <li><div>
-                <a href="https://leetcode.com/227r1a6656" target="_blank" id = "profilelogos"><img src="img/leetcodelogo.png" alt="" id = "pro"> <span class= "links"> LeetCode/<span id = "titles">Ajay Kumar Soma</span></span></a>
-                </div></li> <br>
-                <li><div>
-                <a href="https://codeforces.com/profile/ajaykumar369"target="_blank" id = "profilelogos"><img src="img/codeforece.png" alt="" id="pro"> <span class="links"> Codeforces/<span id = "titles">ajaykumar369</span></span></a>
-                </div></li> <br>
-                <li><div>
-                <a href="https://www.codechef.com/users/ajaykumar369"target="_blank" id = "profilelogos"><img src="img/codechef.jpeg" alt="" id="pro"> <span class="links"> CodeChef/<span id = "titles">ajaykumar369</span></span></a>
-                </div></li> <br>
-            </ul>
-            <img src="img/profiles.jpeg" alt="" id = "homeimg3">
+
+
+            <div class="home-image">
+
+                <img src="img/home.gif"
+                    alt="Ajay Kumar Soma">
+
+            </div>
+
         </section>
-    <!-- profile section end  -->
-    <hr>
-    <!-- projects section start  -->
-    <section id="projects">
-        <div>
-            <h1 style="text-align: center;" id="h11">Projects <i id="titles" class="fa fa-laptop-code"></i></h1>
-            <br>
-            <h2>=> Cardiovascular Disease Prediction</h2>
-            <ul id="pinfo">
-                <li>Built a <span id="titles">Streamlit-based</span> web app for cardiovascular disease prediction using an <span id="titles">XGBoost model</span>.</li>
-                <li>Designed an interactive UI with patient input fields and real-time predictions.</li>
-                <li>Technologies Used: <span id="titles">Python, Streamlit, XGBoost</span>.</li>
-                <li><a href="https://github.com/MrAjay279/Cardiovascular_Disease_Prediction" id = "p1" target="_blank" style="text-decoration: underline;">View Project.</a></li>
-            </ul>
-            <br>
-            <h2>=> University Management System</h2>
-            <ul id="pinfo">
-                <li>Developed a comprehensive <span id="titles">University Management System</span> enabling the admin to enroll and disenroll students and faculty members.</li>
-                <li>Implemented secure login functionality for students and faculty to view their reports and details.</li>
-                <li>Technologies Used: <span id="titles">Java, JavaScript, HTML, CSS, MySQL</span>.</li>
-                <li><a href="https://github.com/MrAjay279/University_Management_System" id = "p1" target="_blank" style="text-decoration: underline;">View Project.</a></li>
-            </ul>
-            <br>
-            <h2>=> Port Folio</h2>
-            <ul id = "pinfo">
-                <li>An interface which describe my <span id="titles">Skills</span> and <span id = "titles">Achievements</span>.</li>
-                <li>Technologies Used: <span id="titles">HTML , CSS , JavaScript</span>.</li>
-                <li><a href="https://github.com/MrAjay279/My_Portfolio_Website" id = "p1" target="_blank" style="text-decoration: underline;">View Project.</a></li>
-            </ul>
-            <br>
-            <h2>=> Human Face Age & Gender Classification</h2>
-            <ul id="pinfo">
-                <li>Leveraged <span id="titles">Deep Neural Networks (DNN)</span> to accurately classify human age and gender.</li>
-                <li>Utilized pre-trained models for face detection, age estimation, and gender classification, achieving high precision.</li>
-                <li>Technologies Used: <span id="titles">Python, PyCharm, OpenCV</span>.</li>
-                <li><a href="https://github.com/MrAjay279/Human-Face-Age-Gender-Detection" id = "p1" target="_blank" style="text-decoration: underline;">View Project.</a></li>
-            </ul>
-            <br>
-            <img src="img/projects.gif" alt="" id="homeimg4">
-        </div>
-    </section>
-    <!-- projects section end  -->
 
-    <hr>
-    <!-- contact section start  -->
-    <section class="container contact" id="contact">
-        <div class="contact-container">
-            <div class="main-title">
+
+        <!-- ================================
+             ABOUT
+        ================================= -->
+
+        <section id="about">
+
+            <div class="section-title">
+
+                <h2>About <span>Me</span></h2>
+
+                <p>A little about me</p>
+
             </div>
-            <div class="contact-content-con">
-                <div class="left-contact">
-                    <h4 id="h11">Contact me here</h4>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span class = "location">Location</span>
-                            </div>
-                            <p>
-                               <span id="my-location">: Hyderabad, India</span> 
-                            </p>
+
+
+            <div class="about-container">
+
+                <div class="about-image">
+
+                    <img src="img/img2.jpg"
+                        alt="Ajay Kumar Soma">
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <h3>
+                        Computer Science Engineer
+                        <span>& AI/ML Enthusiast</span>
+                    </h3>
+
+                    <p>
+                        I'm Ajay Kumar Soma, a Computer Science and Engineering
+                        graduate specializing in Artificial Intelligence &
+                        Machine Learning.
+                    </p>
+
+                    <p>
+                        I enjoy solving programming problems, learning new
+                        technologies, and developing applications that solve
+                        real-world problems. My interests include software
+                        development, data structures and algorithms, databases,
+                        and machine learning.
+                    </p>
+
+                    <div class="about-highlights">
+
+                        <div class="highlight">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>B.Tech CSE (AI & ML)</span>
                         </div>
-                        <div class="contact-item">
-                            <div class="icon">
-                                <i class="fas fa-envelope"></i>
-                                <span id = "email">Email</span>
-                            </div>
-                            <p>
-                                <span id = "my-email">: ajaykumarsoma703@gmail.com</span>
-                            </p>
+
+                        <div class="highlight">
+                            <i class="fa-solid fa-code"></i>
+                            <span>500+ DSA Problems</span>
                         </div>
-                        <div class="contact-item">
-                            <div class="icon">
-                                <i class="fas fa-user-graduate"></i>
-                                <span id="edu">Education</span>
-                            </div>
-                            <p>
-                                <span id = "my-edu">: B.Tech, 4th year</span>
-                            </p>
+
+                        <div class="highlight">
+                            <i class="fa-solid fa-brain"></i>
+                            <span>AI & Machine Learning</span>
                         </div>
-                        <div class="contact-item">
-                            <div class="icon">
-                                <i class="fas fa-phone-square" aria-hidden="true"></i>
-                                <span id = "num">Mobile Number</span>
-                            </div>
-                            <p>
-                                <span id = "my-num">: +91 7036822456</span>
-                            </p>
+
+                        <div class="highlight">
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <span>Software Development</span>
                         </div>
-                        <div class="contact-item">
-                            <div class="icon">
-                                <i class="fas fa-globe-africa"></i>
-                                <span id = "lan">Languages Know</span>
-                            </div>
-                            <p>
-                                <span id = "my-lan">: Telugu, English, Hindi</span>
-                            </p>
-                        </div>
+
                     </div>
-                    <div class="contact-icons">
-                        <div class="contact-icon">
-                            <a href="mailto:ajaykumarsoma703@gmail.com" target="_blank" style="font-size: 24px; color: rgb(240, 14, 14);"><i class='bx bx-envelope'></i></a>
-                            <a href="www.linkedin.com/in/ajay-kumar-soma" target="_blank" style="font-size: 24px; color: rgb(10, 102, 194);" class="fab fa-linkedin"></a>
-                            <a href="https://github.com/MrAjay279" class="fab fa-github" style="font-size: 24px; color: black;" target="_blank"></a></a>
-                            <a href="tel:+917036822456" target="_blank" style="font-size: 24px; color: rgb(27, 221, 40);"><i class='bx bx-phone'></i></a>
-                            <a href="https://www.instagram.com/_.__a_j_a_y_k_u_m_a_r__._/?__pwa=1" class="fab fa-instagram" style="font-size: 24px; color: rgb(193,53,132);" target="_blank"></a></a>
-                            <a href="https://www.facebook.com/ajaykumarsoma369?mibextid=ZbWKwL" id = ""class = "fab fa-facebook" target="_blank" style="font-size: 24px; color: rgb(10, 102, 194);"></a></a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             EDUCATION
+        ================================= -->
+
+        <section id="education">
+
+            <div class="section-title">
+
+                <h2>My <span>Education</span></h2>
+
+                <p>Academic background</p>
+
+            </div>
+
+
+            <div class="timeline">
+
+                <div class="education-item">
+
+                    <div class="education-card">
+
+                        <h3>CMR Technical Campus</h3>
+
+                        <h4>
+                            Bachelor of Technology in Computer Science and
+                            Engineering (AI & ML)
+                        </h4>
+
+                        <p>
+                            CGPA: <strong>8.06</strong>
+                        </p>
+
+                        <span class="education-date">
+                            Nov 2022 – Jul 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="education-item">
+
+                    <div class="education-card">
+
+                        <h3>
+                            Telangana State Model School & Jr. College
+                        </h3>
+
+                        <h4>
+                            Intermediate – MPC
+                        </h4>
+
+                        <p>
+                            CGPA: <strong>7.57</strong>
+                        </p>
+
+                        <span class="education-date">
+                            May 2020 – May 2022
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="education-item">
+
+                    <div class="education-card">
+
+                        <h3>
+                            Zilla Parishad High School
+                        </h3>
+
+                        <h4>
+                            SSC
+                        </h4>
+
+                        <p>
+                            CGPA: <strong>10.0</strong>
+                        </p>
+
+                        <span class="education-date">
+                            Jun 2019 – Mar 2020
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             SKILLS
+        ================================= -->
+
+        <section id="skills">
+
+            <div class="section-title">
+
+                <h2>My <span>Skills</span></h2>
+
+                <p>Technologies and concepts I work with</p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+                <div class="skill-category">
+
+                    <h3>
+                        <i class="fa-solid fa-code"></i>
+                        Programming Languages
+                    </h3>
+
+                    <div class="skill-tags">
+
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">SQL</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-category">
+
+                    <h3>
+                        <i class="fa-solid fa-globe"></i>
+                        Web Technologies
+                    </h3>
+
+                    <div class="skill-tags">
+
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-category">
+
+                    <h3>
+                        <i class="fa-solid fa-database"></i>
+                        Database
+                    </h3>
+
+                    <div class="skill-tags">
+
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQL</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-category">
+
+                    <h3>
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        Tools
+                    </h3>
+
+                    <div class="skill-tags">
+
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Jupyter Notebook</span>
+                        <span class="skill-tag">PyCharm</span>
+                        <span class="skill-tag">Visual Studio</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-category">
+
+                    <h3>
+                        <i class="fa-solid fa-brain"></i>
+                        Core Concepts
+                    </h3>
+
+                    <div class="skill-tags">
+
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">Algorithms</span>
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">Problem Solving</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-category">
+
+                    <h3>
+                        <i class="fa-solid fa-chart-line"></i>
+                        Other
+                    </h3>
+
+                    <div class="skill-tags">
+
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">PowerPoint</span>
+                        <span class="skill-tag">MS Word</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             CODING PROFILES
+        ================================= -->
+
+        <section id="profiles">
+
+            <div class="section-title">
+
+                <h2>Coding <span>Profiles</span></h2>
+
+                <p>My competitive programming journey</p>
+
+            </div>
+
+
+            <div class="profile-stats">
+
+                <div class="stat-card">
+
+                    <h3>500+</h3>
+
+                    <p>
+                        DSA Problems Solved
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <h3>100+</h3>
+
+                    <p>
+                        LeetCode Problems
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <h3>350+</h3>
+
+                    <p>
+                        CodeChef Problems
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-links">
+
+                <a href="https://leetcode.com/227r1a6656"
+                    target="_blank"
+                    class="profile-link">
+
+                    <i class="fa-solid fa-code"></i>
+
+                    <div>
+
+                        <strong>LeetCode</strong>
+
+                        <span>Ajay Kumar Soma</span>
+
+                    </div>
+
+                </a>
+
+
+                <a href="https://codeforces.com/profile/ajaykumar369"
+                    target="_blank"
+                    class="profile-link">
+
+                    <i class="fa-solid fa-terminal"></i>
+
+                    <div>
+
+                        <strong>Codeforces</strong>
+
+                        <span>ajaykumar369</span>
+
+                    </div>
+
+                </a>
+
+
+                <a href="https://www.codechef.com/users/ajaykumar369"
+                    target="_blank"
+                    class="profile-link">
+
+                    <i class="fa-solid fa-laptop-code"></i>
+
+                    <div>
+
+                        <strong>CodeChef</strong>
+
+                        <span>ajaykumar369</span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             PROJECTS
+        ================================= -->
+
+        <section id="projects">
+
+            <div class="section-title">
+
+                <h2>Featured <span>Projects</span></h2>
+
+                <p>Some of the projects I've worked on</p>
+
+            </div>
+
+
+            <div class="projects-grid">
+
+
+                <!-- PROJECT 1 -->
+
+                <article class="project-card">
+
+                    <p class="project-number">
+                        PROJECT 01
+                    </p>
+
+                    <h3>
+                        Skill Recommendation System for Rural Youth Based on
+                        Market Demand
+                    </h3>
+
+                    <p class="project-description">
+                        A web-based system designed to recommend relevant
+                        skills and career paths based on user profiles and
+                        market demand.
+                    </p>
+
+                    <ul class="project-points">
+
+                        <li>
+                            Developed user and admin modules with profile
+                            management and recommendation functionality.
+                        </li>
+
+                        <li>
+                            Implemented ranked skill recommendations and
+                            curated learning resources.
+                        </li>
+
+                        <li>
+                            Built the backend using Node.js and Express.js
+                            with MySQL for data management.
+                        </li>
+
+                    </ul>
+
+                    <div class="project-tech">
+
+                        <span>Node.js</span>
+                        <span>Express.js</span>
+                        <span>MySQL</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+                    <!-- Replace with your actual repository -->
+                    <a href="https://github.com/MrAjay279/Skill-Recommendation-System-for-rural-youth-based-on-market-demand"
+                        class="project-btn">
+
+                        GitHub Link
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 2 -->
+
+                <article class="project-card">
+
+                    <p class="project-number">
+                        PROJECT 02
+                    </p>
+
+                    <h3>
+                        Cardiovascular Disease Prediction
+                    </h3>
+
+                    <p class="project-description">
+                        A machine learning web application for predicting
+                        cardiovascular disease using an XGBoost model.
+                    </p>
+
+                    <ul class="project-points">
+
+                        <li>
+                            Built a Streamlit-based web application for
+                            cardiovascular disease prediction.
+                        </li>
+
+                        <li>
+                            Designed an interactive interface with patient
+                            input fields and real-time predictions.
+                        </li>
+
+                    </ul>
+
+                    <div class="project-tech">
+
+                        <span>Python</span>
+                        <span>Streamlit</span>
+                        <span>XGBoost</span>
+
+                    </div>
+
+                    <a href="https://github.com/MrAjay279/Cardiovascular_Disease_Prediction"
+                        target="_blank"
+                        class="project-btn">
+
+                        GitHub Link
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 3 -->
+
+                <article class="project-card">
+
+                    <p class="project-number">
+                        PROJECT 03
+                    </p>
+
+                    <h3>
+                        University Management System
+                    </h3>
+
+                    <p class="project-description">
+                        A comprehensive university management system for
+                        managing students, faculty, authentication, and
+                        academic information.
+                    </p>
+
+                    <ul class="project-points">
+
+                        <li>
+                            Developed admin functionality for enrolling and
+                            disenrolling students and faculty members.
+                        </li>
+
+                        <li>
+                            Implemented secure login functionality for students
+                            and faculty to access reports and details.
+                        </li>
+
+                    </ul>
+
+                    <div class="project-tech">
+
+                        <span>Java</span>
+                        <span>JavaScript</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>MySQL</span>
+
+                    </div>
+
+                    <a href="https://github.com/MrAjay279/University_Management_System"
+                        target="_blank"
+                        class="project-btn">
+
+                        GitHub Link
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 4 -->
+
+                <article class="project-card">
+
+                    <p class="project-number">
+                        PROJECT 04
+                    </p>
+
+                    <h3>
+                        Human Face Age & Gender Classification
+                    </h3>
+
+                    <p class="project-description">
+                        A computer vision project using deep neural networks
+                        and pre-trained models for age and gender
+                        classification.
+                    </p>
+
+                    <ul class="project-points">
+
+                        <li>
+                            Used Deep Neural Networks for age and gender
+                            classification.
+                        </li>
+
+                        <li>
+                            Integrated pre-trained models for face detection,
+                            age estimation, and gender classification.
+                        </li>
+
+                    </ul>
+
+                    <div class="project-tech">
+
+                        <span>Python</span>
+                        <span>OpenCV</span>
+                        <span>DNN</span>
+                        <span>PyCharm</span>
+
+                    </div>
+
+                    <a href="https://github.com/MrAjay279/Human-Face-Age-Gender-Detection"
+                        target="_blank"
+                        class="project-btn">
+
+                        GitHub Link
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 5 -->
+
+                <article class="project-card">
+
+                    <p class="project-number">
+                        PROJECT 05
+                    </p>
+
+                    <h3>
+                        Personal Portfolio Website
+                    </h3>
+
+                    <p class="project-description">
+                        A responsive personal portfolio website created to
+                        showcase my education, technical skills, projects,
+                        coding profiles, and achievements.
+                    </p>
+
+                    <ul class="project-points">
+
+                        <li>
+                            Designed a responsive interface for desktop and
+                            mobile devices.
+                        </li>
+
+                        <li>
+                            Added dedicated sections for projects, skills,
+                            education, coding profiles, and contact details.
+                        </li>
+
+                    </ul>
+
+                    <div class="project-tech">
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+                    <a href="https://github.com/MrAjay279/My_Portfolio_Website"
+                        target="_blank"
+                        class="project-btn">
+
+                        GitHub Link
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             CERTIFICATIONS
+        ================================= -->
+
+        <section id="certifications">
+
+            <div class="section-title">
+
+                <h2>My <span>Certifications</span></h2>
+
+                <p>Courses and recognitions</p>
+
+            </div>
+
+
+            <div class="certifications">
+
+                <div class="certificate">
+
+                    <i class="fa-solid fa-award"></i>
+
+                    <div>
+
+                        <h3>
+                            Certificate of Appreciation – Technovanza 3.0
+                        </h3>
+
+                        <p>
+                            Selected for the Internal Level of Smart India
+                            Hackathon (SIH).
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="certificate">
+
+                    <i class="fa-brands fa-python"></i>
+
+                    <div>
+
+                        <h3>
+                            Learn to Code in Python 3 – Udemy
+                        </h3>
+
+                        <p>
+                            Completed Python course from beginner to advanced
+                            level.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="certificate">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                    <div>
+
+                        <h3>
+                            Introduction to Machine Learning
+                        </h3>
+
+                        <p>
+                            Infosys Springboard – foundational machine learning
+                            course.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="certificate">
+
+                    <i class="fa-solid fa-code"></i>
+
+                    <div>
+
+                        <h3>
+                            C++ Fundamentals
+                        </h3>
+
+                        <p>
+                            Infosys Springboard – fundamentals of C++.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="certificate">
+
+                    <i class="fa-solid fa-laptop-code"></i>
+
+                    <div>
+
+                        <h3>
+                            C Programming – IIT Bombay
+                        </h3>
+
+                        <p>
+                            Completed certified C programming course.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="certificate">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <div>
+
+                        <h3>
+                            AI Foundations – Hexart.In
+                        </h3>
+
+                        <p>
+                            Completed foundational Artificial Intelligence
+                            course.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             ACHIEVEMENTS
+        ================================= -->
+
+        <section id="achievements">
+
+            <div class="section-title">
+
+                <h2>Achievements & <span>Activities</span></h2>
+
+                <p>Highlights of my journey</p>
+
+            </div>
+
+
+            <div class="achievement-list">
+
+                <div class="achievement">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                    <div>
+
+                        <h3>
+                            Top 10 Finalist – Smart India Hackathon
+                            Internal Level
+                        </h3>
+
+                        <p>
+                            Qualified among the top 10 teams, demonstrating
+                            innovation, teamwork, and problem solving.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="achievement">
+
+                    <i class="fa-solid fa-medal"></i>
+
+                    <div>
+
+                        <h3>
+                            1st Place – HackerEarth Weekly Test
+                        </h3>
+
+                        <p>
+                            Ranked #1 in a competitive Java programming test,
+                            demonstrating strong coding and problem-solving
+                            skills.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="achievement">
+
+                    <i class="fa-solid fa-code"></i>
+
+                    <div>
+
+                        <h3>
+                            DSA Problem Solving – Ongoing
+                        </h3>
+
+                        <p>
+                            Solved 500+ Data Structures and Algorithms
+                            problems across LeetCode, CodeChef, and
+                            Codeforces.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             CONTACT
+        ================================= -->
+
+        <section id="contact">
+
+            <div class="section-title">
+
+                <h2>Contact <span>Me</span></h2>
+
+                <p>Let's connect</p>
+
+            </div>
+
+
+            <div class="contact-container">
+
+
+                <div class="contact-info">
+
+                    <h3>
+                        Get in touch
+                    </h3>
+
+                    <p>
+                        I'm open to opportunities, collaborations, and
+                        interesting projects. Feel free to reach out.
+                    </p>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <strong>Location</strong>
+
+                            <span>Hyderabad, Telangana, India</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <div>
+
+                            <strong>Email</strong>
+
+                            <span>
+                                ajaykumarsoma703@gmail.com
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <div>
+
+                            <strong>Phone</strong>
+
+                            <span>
+                                +91 7036822456
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
+                        <div>
+
+                            <strong>Degree</strong>
+
+                            <span>
+                                B.Tech – CSE (AI & ML)
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-language"></i>
+
+                        <div>
+
+                            <strong>Languages</strong>
+
+                            <span>
+                                Telugu, English, Hindi
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="social-links">
+
+                        <a href="mailto:ajaykumarsoma703@gmail.com"
+                            title="Email">
+
+                            <i class="fa-solid fa-envelope"></i>
+
                         </a>
+
+
+                        <a href="https://www.linkedin.com/in/ajay-kumar-soma/"
+                            target="_blank"
+                            title="LinkedIn">
+
+                            <i class="fa-brands fa-linkedin-in"></i>
+
+                        </a>
+
+
+                        <a href="https://github.com/MrAjay279"
+                            target="_blank"
+                            title="GitHub">
+
+                            <i class="fa-brands fa-github"></i>
+
+                        </a>
+
+
+                        <a href="tel:+917036822456"
+                            title="Phone">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                        </a>
+
                     </div>
-                    </div>
+
                 </div>
-                <div class="right-contact">
-                    <form action="https://formspree.io/f/xkgodoqk" method = "post" class="contact-form" target="">
-                        <div class="input-control i-c-2">
-                            <input type="text" required placeholder="YOUR NAME" id = "name" name = "Name">
-                            <input type="email" required placeholder="YOUR EMAIL" id = "mail" name = "Mail">
-                        </div>
-                        <div class="input-control">
-                            <input type="text" required placeholder="ENTER SUBJECT" id = "subject" name = "Subject">
-                        </div>
-                        <div class="input-control">
-                            <textarea cols="15" rows="8" placeholder="Message Here..." id = "text1" name = "Message"></textarea>
-                        </div>
-                        <div class="submit-btn">
-                            <button class = "c-btn" id = "a" name="_next" value = "www.google.in" onclick="">Send</button>
-                            <!-- <input type="hidden" name="_next" value="//site.io/thanks.html"/> -->
-                    </form>
-                </div>
+
+
+                <!-- Contact Form -->
+
+                <form
+                    action="https://formspree.io/f/xkgodoqk"
+                    method="POST"
+                    class="contact-form">
+
+                    <input
+                        type="text"
+                        name="Name"
+                        placeholder="Your Name"
+                        required>
+
+                    <input
+                        type="email"
+                        name="Email"
+                        placeholder="Your Email"
+                        required>
+
+                    <input
+                        type="text"
+                        name="Subject"
+                        placeholder="Subject"
+                        required>
+
+                    <textarea
+                        name="Message"
+                        placeholder="Your Message"
+                        required></textarea>
+
+                    <button
+                        type="submit"
+                        class="btn primary-btn send-btn">
+
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Send Message
+
+                    </button>
+
+                </form>
+
             </div>
-    </section>
-    <!-- conteact section end  -->
-</main>
-<!-- footer start  -->
-<footer>
-    <div class="copyright">
-          <p id = "year" style="display: inline;"></p> © PortFolio | All Right Reserved.
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+
+        <p>
+            © <span id="year"></span> Ajay Kumar Soma.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- SCROLL TOP -->
+
+    <div id="scroll-top">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
     </div>
-</footer>
-<!-- footer end -->
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        /* ================================
+           MOBILE MENU
+        ================================= */
+
+        const menuIcon = document.getElementById("menu-icon");
+        const navbar = document.querySelector(".navbar");
+
+        menuIcon.addEventListener("click", () => {
+
+            navbar.classList.toggle("active");
+
+            const icon = menuIcon.querySelector("i");
+
+            if (navbar.classList.contains("active")) {
+
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+
+            } else {
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+
+            }
+
+        });
+
+
+        /* Close menu after clicking a link */
+
+        document.querySelectorAll(".navbar a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navbar.classList.remove("active");
+
+                const icon = menuIcon.querySelector("i");
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+
+            });
+
+        });
+
+
+        /* ================================
+           ACTIVE NAVIGATION
+        ================================= */
+
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".navbar a");
+
+        window.addEventListener("scroll", () => {
+
+            let current = "";
+
+            sections.forEach(section => {
+
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.clientHeight;
+
+                if (
+                    window.scrollY >= sectionTop &&
+                    window.scrollY < sectionTop + sectionHeight
+                ) {
+
+                    current = section.getAttribute("id");
+
+                }
+
+            });
+
+            navLinks.forEach(link => {
+
+                link.style.color = "";
+
+                if (link.getAttribute("href") === "#" + current) {
+
+                    link.style.color = "#38bdf8";
+
+                }
+
+            });
+
+        });
+
+
+        /* ================================
+           SCROLL TO TOP
+        ================================= */
+
+        const scrollTop = document.getElementById("scroll-top");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 500) {
+
+                scrollTop.style.display = "flex";
+
+            } else {
+
+                scrollTop.style.display = "none";
+
+            }
+
+        });
+
+
+        scrollTop.addEventListener("click", () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+
+        /* ================================
+           FOOTER YEAR
+        ================================= */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+    </script>
+
 </body>
-<script src="script.js"></script>
+
 </html>
